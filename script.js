@@ -18,9 +18,7 @@ let playerSelection = playerPlay();
 
 /* Create a function that returns a string that explains who wins */
 function playRound(playerSelection, computerSelection) {
-    let youWin = "You win; " + playerSelection + " beats " + computerSelection + "!";
-    let youLose = "You lose; " + computerSelection + " beats " + playerSelection + "."
-    if (playerSelection === computerSelection){
+       if (playerSelection === computerSelection){
         return "It's a tie!"
     }
     else if
@@ -30,7 +28,7 @@ function playRound(playerSelection, computerSelection) {
             (playerSelection === "scissors" && computerSelection === "paper")
             )
             {
-                return youWin
+                return "youWin"
              }
     else if
             (
@@ -38,8 +36,14 @@ function playRound(playerSelection, computerSelection) {
             (playerSelection === "paper" && computerSelection === "scissors") ||
             (playerSelection === "scissors" && computerSelection === "rock")
             )
-             return youLose
-                 
+             return "youLose"
+        
+        if (playRound(playerSelection, computerSelection) === "youWin") {
+                console.log("You win; " + playerSelection + " beats " + computerSelection + "!")
+            }
+        else if (playRound(playerSelection, computerSelection) === "youLose") {
+                console.log("You lose; " + computerSelection + " beats " + playerSelection + ".")
+            }                
 }
 
 /* Create a function that runs the function playRound 5 times, considering a score*/
@@ -57,12 +61,13 @@ function game(){
         playRound(playerSelection, computerSelection);
     /* Each time per loop, check who won */
 
-        if (playRound (playerSelection, computerSelection) === youWin) {
+        if (playRound (playerSelection, computerSelection) === "youWin") {
             playerScore += 1;
         }
-        else if (playRound (playerSelection, computerSelection) === youLose) {
+        else if (playRound (playerSelection, computerSelection) === "youLose") {
             computerScore += 1;
         }
+        else console.log("You tied.")
         console.log("The scores are: Player: " + playerScore + " Computer: " + computerScore);
     }
     /* After the 5 rounds are looped, alert the result of the game */
@@ -78,4 +83,3 @@ function game(){
 }
 
 game();
-
