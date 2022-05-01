@@ -56,13 +56,14 @@ function game(){
     /* After the picks are assigned to the variables, run the playRound function with those values */    
         playRound(playerSelection, computerSelection);
     /* Each time per loop, check who won */
-    
+
         if (playRound (playerSelection, computerSelection) === youWin) {
             playerScore += 1;
         }
         else if (playRound (playerSelection, computerSelection) === youLose) {
             computerScore += 1;
-        }  
+        }
+        console.log("The scores are: Player: " + playerScore + " Computer: " + computerScore);
     }
     /* After the 5 rounds are looped, alert the result of the game */
     if (playerScore > computerScore) {
