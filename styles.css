@@ -4,13 +4,25 @@ body {
     background-color: #29293d;
     margin: 0px;
     color: lightgrey;
-
 }
 
 header {
-    width: auto;
+    width: 100%;
     height: 150px;
     background-color: #14141f;
+}
+
+footer {
+ width: 100%;
+ height: 100px;
+ background-color: #14141f;
+ margin-top: 150px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+footer p {
+    font-size: 20px;
 }
 
 #title{
@@ -34,15 +46,17 @@ header {
 }
 h3 {
     font-size: 30px;
+    font-weight: bold;
 }
 p {
     font-size: 25px;
+    font-weight: bold;
 }
 .results {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: 50px auto auto;
     gap: 50px;
 }
 .photo {
@@ -57,7 +71,28 @@ p {
     align-items: center;
 }
 
+.choices {
+    margin-top: 75px;
+    display: flex;
+    gap: 50px;
+}
+
 button {
     height: 150px;
     width:  150px;
+    border-radius: 15px;
+    background-color: #47476b;
+}
+ button:hover {background-color: #33334d}
+.button:active {
+    background-color: #33334d;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+button img {
+    display: block;
+    height: 90px;
+    width: 90px;
+    margin: auto;
 }
