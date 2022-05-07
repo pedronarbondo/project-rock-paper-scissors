@@ -59,11 +59,12 @@ p {
     margin: 50px auto auto;
     gap: 50px;
 }
-.photo {
-    height: 50px;
-    width: 50px;
-    background-color: white;
-}
+.photo img {
+    width: 100px;
+    height: 135px;
+ }
+
+ }
 
 .player, .computer {
     display: flex;
@@ -81,7 +82,7 @@ button {
     height: 150px;
     width:  150px;
     border-radius: 15px;
-    background-color: #47476b;
+    background-color: #3d3d5c;
 }
  button:hover {background-color: #33334d}
 .button:active {
