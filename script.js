@@ -1,3 +1,5 @@
+
+
 /* Create function that returns a random choice between the three possible */
 function computerPlay() {
     let possible = ["Rock", "Paper", "Scissors"];
@@ -5,11 +7,17 @@ function computerPlay() {
     let computerSelected = possible[number].toLowerCase();
     return computerSelected
 }
-/* Create function that returns whatever the played types on the input */
-function playerPlay() {
-    let playerSelected = prompt("Rock, Paper, or Scissors?").toLowerCase();
-    return playerSelected;
-}
+
+let rockButton = document.querySelector(".rock");
+let paperButton =  document.querySelector(".paper");
+let scissorsButton = document.querySelector(".scissors");
+let playerPhoto = document.querySelector(".player").querySelector("img")
+
+rockButton.addEventListener('click', () => playerPhoto.src="img/rock.png");
+paperButton.addEventListener('click', () => playerPhoto.src="img/paper.png");
+scissorsButton.addEventListener('click', () => playerPhoto.src="img/scissors.png");
+
+
 
 /* Assign the values of the functions previously defined to variables to use in future functions*/
 /*let computerSelection = computerPlay();
