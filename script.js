@@ -46,6 +46,8 @@ scissorsButton.addEventListener('click', () => {playerPhoto.src="img/scissors.pn
 
 function checkWinner(playerScore, computerScore) {
     if (computerScore >= 5) {
+        computerScore = 5;
+        playerScore = playerScore;
         playerPhoto.src="img/lost.png";
         computerPhoto.src="img/won.png";
         playerScoreText.textContent = `Player: ${playerScore}`
@@ -54,6 +56,7 @@ function checkWinner(playerScore, computerScore) {
         statusText.textContent = "The computer wins."
     }
     else if (playerScore >= 5) {
+        playerScore = 5;
         playerPhoto.src="img/won.png";
         computerPhoto.src="img/lost.png";
         playerScoreText.textContent = `Player: ${playerScore}`
