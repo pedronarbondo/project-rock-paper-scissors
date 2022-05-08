@@ -4,8 +4,7 @@ function computerPlay() {
     let computerSelected = possible[number].toLowerCase();
     return computerSelected
 }
-let computerChoice;
-/* Incredibly this next function worked on the first time */
+
 function changeComputerPhoto(){
     computerPlay();
     let computerChoice = computerPlay();
@@ -20,10 +19,8 @@ function changeComputerPhoto(){
         computerPhoto.src="img/scissors.png";
         break;
     }
-    console.log(`Computer chose ${computerChoice}`);
 }
 
-/* This next group is everything related to the buttons and the chosen-item images */
 let rockButton = document.querySelector(".rock");
 let paperButton =  document.querySelector(".paper");
 let scissorsButton = document.querySelector(".scissors");
@@ -32,7 +29,6 @@ let playerPhoto = document.querySelector(".player").querySelector("img");
 let computerPhoto = document.querySelector(".computer").querySelector("img");
 
 
-/* This group of references is for the top part of the UI, with the status */
 let playerScoreText = document.querySelector(".player").querySelector("p");
 let computerScoreText = document.querySelector(".computer").querySelector("p");
 let statusHeaderText = document.querySelector('h3');
@@ -48,22 +44,27 @@ scissorsButton.addEventListener('click', () => {playerPhoto.src="img/scissors.pn
 }
 
 
+function checkWinner(playerScore, computerScore) {
+    if (computerScore >= 5) {
+        playerPhoto.src="img/lost.png";
+        computerPhoto.src="img/won.png";
+        playerScoreText.textContent = `Player: ${playerScore}`
+        computerScoreText.textContent = `Computer: ${computerScore}`;
+        statusHeaderText.textContent = "GAME OVER"
+        statusText.textContent = "The computer wins."
+    }
+    else if (playerScore >= 5) {
+        playerPhoto.src="img/won.png";
+        computerPhoto.src="img/lost.png";
+        playerScoreText.textContent = `Player: ${playerScore}`
+        computerScoreText.textContent = `Computer: ${computerScore}`;
+        statusHeaderText.textContent = "GAME OVER"
+        statusText.textContent = "You win."
+    }
+}
 function round(){
-        
-if (computerScore == 5) {
-    playerScoreText.textContent = `Player: ${playerScore}`
-    computerScoreText.textContent = `Computer: ${computerScore}`;
-    statusHeaderText.textContent = "GAME OVER"
-    statusText.textContent = "The computer wins."
-}
 
-else if (playerScore == 5) {
-    playerScoreText.textContent = `Player: ${playerScore}`
-    computerScoreText.textContent = `Computer: ${computerScore}`;
-    statusHeaderText.textContent = "GAME OVER"
-    statusText.textContent = "You win."
-}
-    else if (
+    if (
     (playerPhoto.src === "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/rock.png" && computerPhoto.src == "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/rock.png") ||
     (playerPhoto.src === "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/paper.png" && computerPhoto.src == "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/paper.png") ||
     (playerPhoto.src === "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/scissors.png" && computerPhoto.src == "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/scissors.png")
@@ -73,6 +74,7 @@ else if (playerScore == 5) {
         statusText.textContent = "It's a tie !";
         playerScoreText.textContent = `Player: ${playerScore}`
         computerScoreText.textContent = `Computer: ${computerScore}`;
+        checkWinner(playerScore, computerScore);
     }
     else if
     (
@@ -86,6 +88,7 @@ else if (playerScore == 5) {
         statusText.textContent = "You are awarded one point !";
         playerScoreText.textContent = `Player: ${playerScore}`
         computerScoreText.textContent = `Computer: ${computerScore}`;
+        checkWinner(playerScore, computerScore);
     }
     else if
     (
@@ -99,6 +102,7 @@ else if (playerScore == 5) {
         statusText.textContent = "The computer won one point !";
         playerScoreText.textContent = `Player: ${playerScore}`
         computerScoreText.textContent = `Computer: ${computerScore}`;
+        checkWinner(playerScore, computerScore);
     }
 }
 
