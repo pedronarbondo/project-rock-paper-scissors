@@ -4,7 +4,7 @@ function computerPlay() {
     let computerSelected = possible[number].toLowerCase();
     return computerSelected
 }
-
+let computerChoice;
 /* Incredibly this next function worked on the first time */
 function changeComputerPhoto(){
     computerPlay();
@@ -12,14 +12,15 @@ function changeComputerPhoto(){
     switch (computerChoice) {
     case "rock":
         computerPhoto.src="img/rock.png";
-        return computerChoice;
+        break;
     case "paper":
         computerPhoto.src="img/paper.png";
-        return computerChoice;
+        break;
     case "scissors":
         computerPhoto.src="img/scissors.png";
-        return computerChoice;
+        break;
     }
+    console.log(`Computer chose ${computerChoice}`);
 }
 
 /* This next group is everything related to the buttons and the chosen-item images */
@@ -31,56 +32,74 @@ let playerPhoto = document.querySelector(".player").querySelector("img");
 let computerPhoto = document.querySelector(".computer").querySelector("img");
 
 
-function playerPlay(){
-let playerChoice; 
-rockButton.addEventListener('click', () => {playerPhoto.src="img/rock.png", playerChoice = "rock"});
-paperButton.addEventListener('click', () => {playerPhoto.src="img/paper.png", playerChoice = "paper"});
-scissorsButton.addEventListener('click', () => {playerPhoto.src="img/scissors.png", playerChoice = "scissors"});
-return playerChoice;
-}
-
-
-
-
 /* This group of references is for the top part of the UI, with the status */
 let playerScoreText = document.querySelector(".player").querySelector("p");
 let computerScoreText = document.querySelector(".computer").querySelector("p");
+let statusHeaderText = document.querySelector('h3');
 let statusText = document.querySelector('p');
-
 
 let playerScore = 0;
 let computerScore = 0;
 
+function playerPlay(){
+rockButton.addEventListener('click', () => {playerPhoto.src="img/rock.png", changeComputerPhoto(), round()});
+paperButton.addEventListener('click', () => {playerPhoto.src="img/paper.png", changeComputerPhoto(), round()});
+scissorsButton.addEventListener('click', () => {playerPhoto.src="img/scissors.png", changeComputerPhoto(), round()});
+}
 
-function playRps(){
-for (let i = 0; playerScore <= 5 || computerScore <= 5; i++){
 
-playerPlay();
-changeComputerPhoto();
+function round(){
+        
+if (computerScore == 5) {
+    playerScoreText.textContent = `Player: ${playerScore}`
+    computerScoreText.textContent = `Computer: ${computerScore}`;
+    statusHeaderText.textContent = "GAME OVER"
+    statusText.textContent = "The computer wins."
+}
 
-    if (changeComputerPhoto() === playerPlay()) {
-        statusText.textContent = "It's a tie!"
+else if (playerScore == 5) {
+    playerScoreText.textContent = `Player: ${playerScore}`
+    computerScoreText.textContent = `Computer: ${computerScore}`;
+    statusHeaderText.textContent = "GAME OVER"
+    statusText.textContent = "You win."
+}
+    else if (
+    (playerPhoto.src === "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/rock.png" && computerPhoto.src == "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/rock.png") ||
+    (playerPhoto.src === "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/paper.png" && computerPhoto.src == "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/paper.png") ||
+    (playerPhoto.src === "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/scissors.png" && computerPhoto.src == "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/scissors.png")
+    )
+    {
+        statusHeaderText.textContent = "No one wins"
+        statusText.textContent = "It's a tie !";
+        playerScoreText.textContent = `Player: ${playerScore}`
+        computerScoreText.textContent = `Computer: ${computerScore}`;
     }
     else if
     (
-     (playerPlay() === "rock" && changeComputerPhoto() === "scissors") ||
-     (playerPlay() === "paper" && changeComputerPhoto() === "rock") ||
-     (playerPlay() === "scissors" && changeComputerPhoto() === "paper")
-     )
-     {
-        statusText.textContent = "You win one point!";
+    (playerPhoto.src === "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/rock.png" && computerPhoto.src == "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/scissors.png") ||
+    (playerPhoto.src === "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/paper.png" && computerPhoto.src == "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/rock.png") ||
+    (playerPhoto.src === "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/scissors.png" && computerPhoto.src == "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/paper.png")
+    )
+    {
         playerScore++;
+        statusHeaderText.textContent = "You won!"
+        statusText.textContent = "You are awarded one point !";
         playerScoreText.textContent = `Player: ${playerScore}`
-     }
-     else if
-     (
-     (playerPlay() === "rock" && changeComputerPhoto() === "paper") ||
-     (playerPlay() === "paper" && changeComputerPhoto() === "scissors") ||
-     (playerPlay() === "scissors" && changeComputerPhoto() === "rock")
-     ){
-     statusText.textContent = "The computer wins one point!";
-     computerScore++;
-     computerScoreText.textContent = `Computer: ${computerScore}`;
-     }
+        computerScoreText.textContent = `Computer: ${computerScore}`;
+    }
+    else if
+    (
+    (playerPhoto.src === "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/rock.png" && computerPhoto.src == "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/paper.png") ||
+    (playerPhoto.src === "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/paper.png" && computerPhoto.src == "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/scissors.png") ||
+    (playerPhoto.src === "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/scissors.png" && computerPhoto.src == "file:///home/pnarbondo/repos/odin/odin-rps/top-rock-paper-scissors/img/rock.png")
+    )
+    {
+        computerScore++
+        statusHeaderText.textContent = "You lost!"
+        statusText.textContent = "The computer won one point !";
+        playerScoreText.textContent = `Player: ${playerScore}`
+        computerScoreText.textContent = `Computer: ${computerScore}`;
     }
 }
+
+playerPlay();
